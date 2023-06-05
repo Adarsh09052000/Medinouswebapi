@@ -13,7 +13,7 @@ namespace Medinous.WebApi.Infrastructure.Repository
 {
     public class InstructionToPatientRepository : IInstructionToPatientRepository
     {
-        public InstructionToPatient _InstructionToPatientRepository;
+        public InstructionToPatient _InstructionToPatientRepository = new InstructionToPatient();
 
         public async Task<HttpCustomResponseMessage> SaveInstructionDetails(SaveInstructionRequest saveInstructionRequest)
         {
@@ -32,10 +32,11 @@ namespace Medinous.WebApi.Infrastructure.Repository
             string str = _InstructionToPatientRepository.GetInstructionsToPatient(CostcenterCode);
             return str;
         }
-       public async Task<List<InstructionsList>> GetInstructionToPatientAsync(string CostcenterCode)
-        { 
-            _InstructionToPatientRepository = new InstructionToPatient();
+      public async Task<List<InstructionsList>> GetInstructionToPatientAsync(string CostcenterCode)
+        {
+
             return await _InstructionToPatientRepository.GetInstructionToPatientAsync(CostcenterCode);
+
         }
         /// <summary>
         /// 
